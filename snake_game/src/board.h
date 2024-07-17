@@ -1,20 +1,23 @@
 #include <SFML/Graphics.hpp>
-
+# include "snake.h"
+#include <vector>
 
 class Board{
     //public: access it outside of the class
 public: 
     //construct
-    Board(int height, int width, int count);
+    Board();
     //deconstruct
     ~Board();
-    void setDirction(int dir);
-    void draw(sf::RenderWindow& window, sf::RectangleShape& rectangle);
+    void setHeight(int height);
+    void setWidth(int width);
+    void placeFood();
+    void draw(sf::RenderWindow& window, Snake& snake, int dir);
 private:
     int height;
     int width;
-    int food[10];
-    int dir;
+    vector<pair<int, int>> food;
     int score;
+    int foodCount;
 
 };
