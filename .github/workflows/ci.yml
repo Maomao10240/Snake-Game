@@ -18,13 +18,11 @@ jobs:
 
     - name: Install Google Test
       run: |
-        wget https://github.com/google/googletest/archive/refs/tags/release-1.15.0.tar.gz
-        tar -xzf release-1.15.0.tar.gz
-        cd googletest-release-1.15.0
-        mkdir build
-        cd build
-        cmake ..
-        sudo make install
+        sudo apt-get install -y libgtest-dev
+        cd /usr/src/googletest
+        sudo cmake CMakeLists.txt
+        sudo make
+        sudo cp lib/libgtest*.a /usr/lib
       
     - name: Set up SFML
       run: |

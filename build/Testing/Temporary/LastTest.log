@@ -1,0 +1,29 @@
+Start testing: Jul 18 15:52 PDT
+----------------------------------------------------------
+1/1 Testing: runTests
+1/1 Test: runTests
+Command: "/Users/jiacong/Documents/C++/Learning/Snake-Game/build/runTests"
+Directory: /Users/jiacong/Documents/C++/Learning/Snake-Game/build
+"runTests" start time: Jul 18 15:52 PDT
+Output:
+----------------------------------------------------------
+Running main() from /tmp/googletest-20240716-4770-3kg6po/googletest-1.15.0/googletest/src/gtest_main.cc
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SnakeTest
+[ RUN      ] SnakeTest.Initialization
+[       OK ] SnakeTest.Initialization (0 ms)
+[----------] 1 test from SnakeTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.46 sec
+----------------------------------------------------------
+Test Passed.
+"runTests" end time: Jul 18 15:52 PDT
+"runTests" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Jul 18 15:52 PDT

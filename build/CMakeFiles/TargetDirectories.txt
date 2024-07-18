@@ -1,0 +1,5 @@
+/Users/jiacong/Documents/C++/Learning/Snake-Game/build/CMakeFiles/SnakeGame.dir
+/Users/jiacong/Documents/C++/Learning/Snake-Game/build/CMakeFiles/runTests.dir
+/Users/jiacong/Documents/C++/Learning/Snake-Game/build/CMakeFiles/test.dir
+/Users/jiacong/Documents/C++/Learning/Snake-Game/build/CMakeFiles/edit_cache.dir
+/Users/jiacong/Documents/C++/Learning/Snake-Game/build/CMakeFiles/rebuild_cache.dir
