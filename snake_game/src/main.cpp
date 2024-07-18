@@ -3,7 +3,8 @@
 using namespace std;
 #include "board.h"
 #include <SFML/Graphics.hpp>
-
+#include "Exception/GameOverException.h"
+#include "Constant/constant.h"
 
 //g++ -o sfml-app main.cpp -lsfml-graphics -lsfml-window -lsfml-system
 //-o sfml-app: specify the output file name;  main.cpp is the name of the source file;   
@@ -17,7 +18,7 @@ using namespace std;
 //sdl2_mixer: handle multiple audio channels for sound effects and music
 //sdl2_ttf: render text on the screen
 //sdl2_net: provides simple cross-platform networking support. It is used for network communication
-
+   
 int main(){
     cout<< "Snake Game start..." << endl;
     cout<< "Enter the height of the game board:" <<endl;
@@ -39,9 +40,23 @@ int main(){
     board.setWidth(width);
     board.placeFood();
     sf::RenderWindow window(sf::VideoMode(height, width), "Snake Game!");
-    sf::RectangleShape rectangle(sf::Vector2f(20, 20));
-    rectangle.setPosition(100, 100);
+    //sf::RectangleShape rectangle(sf::Vector2f(20, 20));
+    //rectangle.setPosition(20, 100);
     Snake snake;
+    //Game over window
+    sf::Font font;
+    if(!font.loadFromFile("/System/Library/Fonts/Supplemental/Arial Unicode.ttf")){
+        cout<<"Error loading font"<<endl;
+        return -1;
+    }
+    sf::Text gameOverText;
+    gameOverText.setFont(font);
+    gameOverText.setCharacterSize(CELLSIZE);
+    gameOverText.setFillColor(sf::Color::Red);
+    gameOverText.setPosition(10, 150);
+
+
+    bool gameOver = false;
     while (window.isOpen())
     {
        
@@ -60,8 +75,25 @@ int main(){
             window.clear();
             window.setTitle("Snake Game!      Sore: " + to_string(score));
            
-            board.draw(window, snake, dir);
+            // score += board.draw(window, snake, dir, gameOver);
+      
+            // if(gameOver){
+            //     gameOverText.setString("Game Over");
+            //     window.draw(gameOverText);
+            // }
+            try{
+                score += board.draw(window, snake, dir, gameOver);
+            }catch(GameOverException& e){
+                gameOverText.setString(e.what());
+                
+            }
             
+            if(gameOver){
+                window.draw(gameOverText);
+                window.display();
+                sf::sleep(sf::seconds(2));
+                window.close();
+            }
            
             // window.draw(shape);
             window.display();

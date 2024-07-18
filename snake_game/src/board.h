@@ -12,7 +12,7 @@ public:
     void setHeight(int height);
     void setWidth(int width);
     void placeFood();
-    void draw(sf::RenderWindow& window, Snake& snake, int dir);
+    int draw(sf::RenderWindow& window, Snake& snake, int dir, bool& gameOver);
 private:
     int height;
     int width;

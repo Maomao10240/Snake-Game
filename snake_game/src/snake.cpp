@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 using namespace std;
 #include <iostream>
+#include "Exception/GameOverException.h"
 
 
 Snake::Snake(){
@@ -52,15 +53,12 @@ int Snake::move(sf::RenderWindow& window, int dir){
     int height = windowSize.y;
     int width = windowSize.x;
     if(head_x < 0 ||head_x > width||head_y < 0 ||head_y > height){
-        return -1;
+        throw GameOverException("Game Over: Snake hit the boundary!");
     }
     //4.3 check hit snake
     string newHead = to_string(head_x) +"&"+ to_string(head_y);
     if(body.count(newHead)){
-
-
-        
-        return -1;
+        throw GameOverException("Game Over: Snake hit the body!");
     }
     //cout<< "new head: " <<head_x<<" new y: "<< head_y<< endl;
     snake.push_front({head_x, head_y});
@@ -93,6 +91,7 @@ void Snake::eat(int dir){
     }
 
     //3 eat will not hit the window and the body, as the food should exist within the window and not overlap with the snake
+    
     string newHead = to_string(head_x) +"&"+ to_string(head_y);
   
 
