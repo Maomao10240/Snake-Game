@@ -8,8 +8,8 @@ class Snake{
 public:
     Snake();
     ~Snake();
-    int move(sf::RenderWindow& window, int dir);
-    void eat(int dir);
+    int move(int h_x, int h_y);
+    void eat(int h_x, int h_y);
     deque<pair<int, int>> snake;
     set<string> body;
 

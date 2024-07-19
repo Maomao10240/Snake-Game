@@ -6,6 +6,7 @@ using namespace std;
 #include "Exception/GameOverException.h"
 #include "Constant/constant.h"
 
+
 //g++ -o sfml-app main.cpp -lsfml-graphics -lsfml-window -lsfml-system
 //-o sfml-app: specify the output file name;  main.cpp is the name of the source file;   
 // -lsfml-graphics -lsfml-window -lsfml-system: links sfml libraries for graphics, windows management, and system components
@@ -34,7 +35,6 @@ int main(){
 
     
     int score = 0;
-    int dir = 0;
     Board board;
     board.setHeight(height);
     board.setWidth(width);
@@ -42,7 +42,7 @@ int main(){
     sf::RenderWindow window(sf::VideoMode(height, width), "Snake Game!");
     //sf::RectangleShape rectangle(sf::Vector2f(20, 20));
     //rectangle.setPosition(20, 100);
-    Snake snake;
+
     //Game over window
     sf::Font font;
     if(!font.loadFromFile("/System/Library/Fonts/Supplemental/Arial Unicode.ttf")){
@@ -66,23 +66,17 @@ int main(){
             if (event.type == sf::Event::Closed)
                 window.close();
             if(event.type == sf::Event::KeyPressed){
-                if(event.key.code == sf::Keyboard::Right) dir = 4;
-                else if(event.key.code == sf::Keyboard::Left) dir = 1;
-                else if(event.key.code == sf::Keyboard::Up) dir = 3;
-                else if(event.key.code == sf::Keyboard::Down) dir = 2;
+                if(event.key.code == sf::Keyboard::Right) board.setDir(RIGHT);
+                else if(event.key.code == sf::Keyboard::Left) board.setDir(LEFT);
+                else if(event.key.code == sf::Keyboard::Up) board.setDir(UP);
+                else if(event.key.code == sf::Keyboard::Down) board.setDir(DOWN);
                
             }    
             window.clear();
             window.setTitle("Snake Game!      Sore: " + to_string(score));
-           
-            // score += board.draw(window, snake, dir, gameOver);
-      
-            // if(gameOver){
-            //     gameOverText.setString("Game Over");
-            //     window.draw(gameOverText);
-            // }
+        
             try{
-                score += board.draw(window, snake, dir, gameOver);
+                score += board.draw(window, gameOver);
             }catch(GameOverException& e){
                 gameOverText.setString(e.what());
                 
@@ -97,7 +91,8 @@ int main(){
            
             // window.draw(shape);
             window.display();
-            dir = 0;
+            board.setDir(IDLE);
+
         }   
     
     }

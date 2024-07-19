@@ -1,1 +1,1 @@
-const int CELLSIZE = 10;
+const int CELLSIZE = 20;
