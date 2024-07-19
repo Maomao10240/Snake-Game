@@ -11,7 +11,7 @@ include_directories(${CMAKE_SOURCE_DIR}/include)
 
 # Link necessary libraries (if any, for example, SDL)
 # Find SFML
-find_package(SFML 2.6 REQUIRED COMPONENTS graphics window system)
+find_package(SFML 2.5 REQUIRED COMPONENTS graphics window system)
 
 # Include SFML directories
 include_directories(${SFML_INCLUDE_DIR})
